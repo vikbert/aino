@@ -1,4 +1,4 @@
-.menu-open {
+.menu-open-checkbox {
     display: none;
 }
 
@@ -49,7 +49,7 @@
     -webkit-transform: translate3d(0, 8px, 0);
     transform: translate3d(0, 8px, 0);
 }
-.menu-open:checked {
+.menu-open-checkbox:checked {
     + .menu-open-button .line-1 {
         -webkit-transform: translate3d(0, 0, 0) rotate(45deg);
         transform: translate3d(0, 0, 0) rotate(45deg);

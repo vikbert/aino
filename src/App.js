@@ -9,7 +9,6 @@ function App() {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleMenu = () => {
-        console.log('##');
         setIsOpen(prevValue => !prevValue);
     };
 
@@ -28,7 +27,8 @@ function App() {
 
     return (
         <div className={classNames("wrapper", isOpen && "menu-open")}>
-            <MenuIcon onClick={toggleMenu}/>
+            <h1>foobar</h1>
+            <MenuIcon clickCallback={toggleMenu}/>
             <section className="one" onClick={() => goToPage(0)}>
                 <h1>Profile</h1>
             </section>
