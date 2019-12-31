@@ -1,0 +1,30 @@
+.main {
+  display: flex;
+  height: 100vh;
+  align-items:center;
+  justify-content: center;
+}
+.clock {
+  display: inline;
+  color: #696868;
+  font-family: "Bebas Neue", sans-serif;
+}
+.hour {
+  font-size: 45vw;
+  font-weight: 700;
+}
+.second {
+  font-size: 8vw;
+  font-weight: 500;
+  color: #a2a0a045;
+  margin-top: -30%;
+}
+@media (min-width: 40rem) {
+  .hour {
+    font-size: 20vw;
+    font-weight: 700;
+  }
+  .second {
+    margin-top: -10%;
+  }
+}

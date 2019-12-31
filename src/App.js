@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './App.scss';
 import classNames from 'classnames';
 import MenuIcon from "./components/MenuIcon";
+import Clock from "./components/Clock";
 
 function App() {
     const [isOpen, setIsOpen] = useState(false);
@@ -31,6 +32,7 @@ function App() {
             
             <section className="one" onClick={() => goToPage(0)}>
                 <h1>Clock</h1>
+                <Clock/>
             </section>
             <section className="two" onClick={() => goToPage(1)}>
                 <h1>Timer</h1>
