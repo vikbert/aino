@@ -5,7 +5,7 @@ $color2: #c84051;
 $color3: #4f3462;
 $color4: #794d9a;
 
-$break-small: 320px;
+$break-small: 600px;
 
 * {
   font-family: inherit;
@@ -35,22 +35,6 @@ body {
     width: 100%;
     margin: 0;
     height: 100vh;
-  }
-}
-
-.menu-btn {
-  position: absolute;
-  z-index: 10;
-  top: 0;
-  left: 0;
-  height: 70px;
-  width: 54px;
-  cursor: pointer;
-  background: url(https://iamturner.co.uk/codepen/menu-icon.png) no-repeat center;
-  background-size: 44px;
-
-  &:active {
-    opacity: 0.2;
   }
 }
 

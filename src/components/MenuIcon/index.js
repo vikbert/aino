@@ -9,7 +9,8 @@ const MenuIcon = ({clickCallback, checked = false}) => (
             className="menu-open-checkbox"
             name="menu-open"
             id="menu-open"
-            defaultChecked={checked}
+            onChange={() => {}}
+            checked={checked}
         />
         <label className="menu-open-button"
                htmlFor="menu-open"
