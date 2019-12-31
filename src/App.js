@@ -3,8 +3,6 @@ import './App.scss';
 import classNames from 'classnames';
 import MenuIcon from "./components/MenuIcon";
 
-const pages = ['one', 'two', 'three', 'four'];
-
 function App() {
     const [isOpen, setIsOpen] = useState(false);
 
@@ -12,23 +10,24 @@ function App() {
         setIsOpen(prevValue => !prevValue);
     };
 
-    const goToPage = (page) => {
-        const wrapper = document.getElementsByClassName('wrapper')[0];
+    const goToPage = (pageNumber) => {
         const sections = document.getElementsByTagName('section');
-        for (let sectionIndex = 0; sectionIndex < sections.length; sectionIndex++) {
-            sections[sectionIndex].classList.remove('before', 'after');
-            if (sectionIndex > page) {
-                sections[sectionIndex].classList.add('after');
+
+        // "sections" is NOT an array, but HTMLCollection. 
+        // It need to be converted to an array
+        Array.from(sections).forEach((section, sectionIndex) => {
+            section.classList.remove('before', 'after');
+            if (sectionIndex > pageNumber) {
+                section.classList.add('after');
             }
-        }
-        wrapper.classList.remove('menu-open', 'page-one', 'page-two');
-        wrapper.classList.add('page-' + pages[page]);
+        });
+
+        setIsOpen(false);
     };
 
     return (
         <div className={classNames("wrapper", isOpen && "menu-open")}>
-            <h1>foobar</h1>
-            <MenuIcon clickCallback={toggleMenu}/>
+            <MenuIcon clickCallback={toggleMenu} checked={isOpen}/>
             <section className="one" onClick={() => goToPage(0)}>
                 <h1>Profile</h1>
             </section>

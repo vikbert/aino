@@ -5,6 +5,8 @@ $color2: #c84051;
 $color3: #4f3462;
 $color4: #794d9a;
 
+$break-small: 320px;
+
 * {
   font-family: inherit;
   -webkit-font-smoothing: antialiased;
@@ -17,6 +19,8 @@ html {
 
 body {
   background: #1f252d;
+  margin: 0;
+  height: 100vh;
 }
 
 .wrapper {
@@ -26,6 +30,12 @@ body {
   overflow: hidden;
   position: relative;
   margin: 20px auto 0;
+
+  @media screen and (max-width: $break-small) {
+    width: 100%;
+    margin: 0;
+    height: 100vh;
+  }
 }
 
 .menu-btn {
@@ -84,7 +94,7 @@ h1 {
   font-size: 2rem;
   text-align: center;
   margin: 0;
-  line-height: 70px;
+  line-height: 50px;
   -webkit-user-select: none;
 }
 
