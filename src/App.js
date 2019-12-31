@@ -1,26 +1,48 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react';
+import './App.scss';
+import classNames from 'classnames';
+import MenuIcon from "./components/MenuIcon";
+
+const pages = ['one', 'two', 'three', 'four'];
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleMenu = () => {
+        console.log('##');
+        setIsOpen(prevValue => !prevValue);
+    };
+
+    const goToPage = (page) => {
+        const wrapper = document.getElementsByClassName('wrapper')[0];
+        const sections = document.getElementsByTagName('section');
+        for (let sectionIndex = 0; sectionIndex < sections.length; sectionIndex++) {
+            sections[sectionIndex].classList.remove('before', 'after');
+            if (sectionIndex > page) {
+                sections[sectionIndex].classList.add('after');
+            }
+        }
+        wrapper.classList.remove('menu-open', 'page-one', 'page-two');
+        wrapper.classList.add('page-' + pages[page]);
+    };
+
+    return (
+        <div className={classNames("wrapper", isOpen && "menu-open")}>
+            <MenuIcon onClick={toggleMenu}/>
+            <section className="one" onClick={() => goToPage(0)}>
+                <h1>Profile</h1>
+            </section>
+            <section className="two" onClick={() => goToPage(1)}>
+                <h1>Friends</h1>
+            </section>
+            <section className="three" onClick={() => goToPage(2)}>
+                <h1>Messages</h1>
+            </section>
+            <section className="four" onClick={() => goToPage(3)}>
+                <h1>Settings</h1>
+            </section>
+        </div>
+    );
 }
 
 export default App;
