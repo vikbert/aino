@@ -21,21 +21,22 @@ function App() {
                 section.classList.add('after');
             }
         });
-
+        
         setIsOpen(false);
     };
 
     return (
         <div className={classNames("wrapper", isOpen && "menu-open")}>
             <MenuIcon clickCallback={toggleMenu} checked={isOpen}/>
+            
             <section className="one" onClick={() => goToPage(0)}>
-                <h1>Profile</h1>
+                <h1>Clock</h1>
             </section>
             <section className="two" onClick={() => goToPage(1)}>
-                <h1>Friends</h1>
+                <h1>Timer</h1>
             </section>
             <section className="three" onClick={() => goToPage(2)}>
-                <h1>Messages</h1>
+                <h1>Clarity</h1>
             </section>
             <section className="four" onClick={() => goToPage(3)}>
                 <h1>Settings</h1>
