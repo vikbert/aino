@@ -42,12 +42,12 @@ function App() {
                     <StopWatch />
                 </h1>
             </section>
-            <section className="three" onClick={() => goToPage(2)}>
+            <section className="three after" onClick={() => goToPage(2)}>
                 <h1>
                     <span className="icon-calendar"></span>
                 </h1>
             </section>
-            <section className="four" onClick={() => goToPage(3)}>
+            <section className="four after" onClick={() => goToPage(3)}>
                 <h1>
                     <span className="icon-alarm"></span>
                 </h1>
