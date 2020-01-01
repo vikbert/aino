@@ -1,7 +1,6 @@
 $timer-display-line-height: 100px;
 .timer-window {
     text-align: center;
-    font-size: 2rem;
     height: $timer-display-line-height;
     line-height: $timer-display-line-height;
     margin: $default-gutters;
@@ -9,8 +8,8 @@ $timer-display-line-height: 100px;
 
 .timer-display {
     color: #ffffff;
-    font-size: 83px;
-    letter-spacing: 8px;
+    font-size: 85px;
+    letter-spacing: 6px;
 }
 
 .timer-options {

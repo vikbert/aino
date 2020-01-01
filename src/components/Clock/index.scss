@@ -1,5 +1,13 @@
 @import url(https://fonts.googleapis.com/css?family=Bebas+Neue);
 
+.clock-container {
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    height: 75%;
+    padding: 10px;
+}
+
 .hour {
     font-size: 35vw;
     font-weight: 700;

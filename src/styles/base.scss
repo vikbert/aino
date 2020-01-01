@@ -1,15 +1,31 @@
-.main {
-    display: flex;
-    justify-content: center;
-    align-items:center;
-    height: 75%;
-    padding: 10px;
+.container {
+    height: 100%;
 }
+
 .time-display {
     display: inline;
     color: #696868;
     font-family: "Bebas Neue", sans-serif;
 }
-.centered {
-    text-align: center;
+
+.default {
+    color: #ffffff;
+    background-color: #1f252d !important;
+}
+
+.warning {
+    color: #9F6000 !important;
+    background-color: #FEEFB3 !important;
+}
+.info {
+    color: #059;
+    background-color: #BEF;
+}
+.success {
+    color: #270;
+    background-color: #DFF2BF;
+}
+.error {
+    color: #D8000C;
+    background-color: #FFBABA;
 }

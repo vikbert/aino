@@ -7,9 +7,14 @@ import StopWatch from "./components/StopWatch";
 
 function App() {
     const [isOpen, setIsOpen] = useState(false);
+    const [warning, setWarning] = useState(false);
 
     const toggleMenu = () => {
         setIsOpen(prevValue => !prevValue);
+    };
+
+    const togglePageBgColor = () => {
+        setWarning((prevWarning) => !prevWarning);
     };
 
     const goToPage = (pageNumber) => {
@@ -23,30 +28,34 @@ function App() {
                 section.classList.add('after');
             }
         });
-        
+
         setIsOpen(false);
     };
 
     return (
         <div className={classNames("wrapper", isOpen && "menu-open")}>
             <MenuIcon clickCallback={toggleMenu} checked={isOpen}/>
-            
+
             <section className="one" onClick={() => goToPage(0)}>
                 <h1>
                     <span className="icon-equalizer"></span>
                 </h1>
             </section>
-            <section className="two" onClick={() => goToPage(1)}>
+            
+            <section className={classNames("two", warning && "default")}
+                     onClick={() => goToPage(1)}>
                 <h1>
                     <span className="icon-stopwatch"></span>
-                    <StopWatch />
                 </h1>
+                <StopWatch toggleBgColor={togglePageBgColor}/>
             </section>
+            
             <section className="three after" onClick={() => goToPage(2)}>
                 <h1>
                     <span className="icon-calendar"></span>
                 </h1>
             </section>
+            
             <section className="four after" onClick={() => goToPage(3)}>
                 <h1>
                     <span className="icon-alarm"></span>

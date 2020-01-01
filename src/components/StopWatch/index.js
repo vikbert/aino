@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 let intervals = [];
 const clearIntervals = () => {
@@ -7,15 +8,19 @@ const clearIntervals = () => {
     intervals = [];
 };
 
-const StopWatch = () => {
+const StopWatch = ({toggleBgColor}) => {
     const [seconds, setSeconds] = useState(0);
 
     const countDown = (counter) => {
         clearIntervals();
+        setSeconds(counter);
 
         const intervalId = setInterval(() => {
-            setSeconds(counter);
             counter--;
+            setSeconds(counter);
+            if (counter <= 5) {
+                toggleBgColor();
+            }
             if (counter === 0) {
                 clearInterval(intervalId);
             }
@@ -55,7 +60,7 @@ const StopWatch = () => {
     };
 
     return (
-        <div>
+        <div className={classNames("container")}>
             <div className="timer-window">
                 <div className="time-display timer-display">
                     {secondsToTime(seconds)}
@@ -66,7 +71,7 @@ const StopWatch = () => {
                 <TimerOptionButton optionValue={15}/>
             </div>
             <div className="timer-options">
-                <TimerOptionButton optionValue={20}/>
+                <TimerOptionButton optionValue={25}/>
                 <TimerOptionButton optionValue={30}/>
             </div>
             <div className="timer-options">
@@ -75,6 +80,10 @@ const StopWatch = () => {
             </div>
         </div>
     );
+};
+
+StopWatch.propTypes = {
+    toggleBgColor: PropTypes.func.isRequired,
 };
 
 export default StopWatch;
