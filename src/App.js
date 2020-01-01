@@ -38,27 +38,27 @@ function App() {
 
             <section className="one" onClick={() => goToPage(0)}>
                 <h1>
-                    <span className="icon-equalizer"></span>
+                    <span className="icon-equalizer"/>
                 </h1>
             </section>
             
             <section className={classNames("two", warning && "default")}
                      onClick={() => goToPage(1)}>
                 <h1>
-                    <span className="icon-stopwatch"></span>
+                    <span className="icon-stopwatch"/>
                 </h1>
                 <StopWatch toggleBgColor={togglePageBgColor}/>
             </section>
             
             <section className="three" onClick={() => goToPage(2)}>
                 <h1>
-                    <span className="icon-calendar"></span>
+                    <span className="icon-calendar"/>
                 </h1>
             </section>
             
             <section className="four" onClick={() => goToPage(3)}>
                 <h1>
-                    <span className="icon-alarm"></span>
+                    <span className="icon-alarm"/>
                 </h1>
                 <Clock/>
             </section>
