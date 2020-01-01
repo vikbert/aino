@@ -1,9 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Lato);
 
-$color1: #1f252d;
-$color2: #747474;
-$color3: #FF652F;
-$color4: #61892F;
+$color1: #61892F;
+$color2: #FF652F;
+$color3: #747474;
+$color4: #1f252d;
 
 * {
     font-family: inherit;
@@ -73,19 +73,25 @@ section {
 }
 
 h1 {
-    color: #ffffff47;
-    font-weight: 500;
-    font-size: 2rem;
-    text-align: center;
+    color: #f3f2f2;
+    font-size: 3rem;
+    transition: 2s;
+    text-align: right;
+    padding: 5px 10px 0 0;
     margin: 0;
     line-height: 50px;
     -webkit-user-select: none;
+    :hover {
+        color: #ffffff;
+        transition: 1s;
+    }
 }
 
 .wrapper.menu-open {
     h1 {
-        color: #f3f2f2;
-        font-size: 2rem;
+        color: #ffffff47;
+        font-size: 3rem;
+        text-align: center;
     }
 }
 

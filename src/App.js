@@ -31,17 +31,26 @@ function App() {
             <MenuIcon clickCallback={toggleMenu} checked={isOpen}/>
             
             <section className="one" onClick={() => goToPage(0)}>
-                <h1>Clock</h1>
-                <Clock/>
+                <h1>
+                    <span className="icon-equalizer"></span>
+                </h1>
+                
             </section>
             <section className="two" onClick={() => goToPage(1)}>
-                <h1>Timer</h1>
+                <h1>
+                    <span className="icon-stopwatch"></span>
+                </h1>
             </section>
             <section className="three" onClick={() => goToPage(2)}>
-                <h1>Clarity</h1>
+                <h1>
+                    <span className="icon-calendar"></span>
+                </h1>
             </section>
             <section className="four" onClick={() => goToPage(3)}>
-                <h1>Settings</h1>
+                <h1>
+                    <span className="icon-alarm"></span>
+                </h1>
+                <Clock/>
             </section>
         </div>
     );
