@@ -11,7 +11,7 @@ const Clock = () => {
     });
 
     return (
-        <div className="main">
+        <div className="main centered">
             <div className="clock hour">{today.toString().substr(15, 6)}</div>
             <div className="clock second">{today.toString().substr(22, 2)}</div>
         </div>

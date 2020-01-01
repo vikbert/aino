@@ -3,6 +3,7 @@ import './style.scss';
 import classNames from 'classnames';
 import MenuIcon from "./components/MenuIcon";
 import Clock from "./components/Clock";
+import StopWatch from "./components/StopWatch";
 
 function App() {
     const [isOpen, setIsOpen] = useState(false);
@@ -34,11 +35,11 @@ function App() {
                 <h1>
                     <span className="icon-equalizer"></span>
                 </h1>
-                
             </section>
             <section className="two" onClick={() => goToPage(1)}>
                 <h1>
                     <span className="icon-stopwatch"></span>
+                    <StopWatch />
                 </h1>
             </section>
             <section className="three" onClick={() => goToPage(2)}>
@@ -51,6 +52,7 @@ function App() {
                     <span className="icon-alarm"></span>
                 </h1>
                 <Clock/>
+                {/*<StopWatch />*/}
             </section>
         </div>
     );

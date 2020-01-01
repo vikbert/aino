@@ -1,0 +1,16 @@
+.timer-window {
+    text-align: center;
+    font-size: 40px;
+    border: 1px solid yellow;
+}
+
+.timer-options {
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+.timer-option {
+    width: 80px;
+    height: 80px;
+    border: 1px solid yellow;
+}
