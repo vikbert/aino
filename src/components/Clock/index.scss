@@ -1,0 +1,32 @@
+@import url(https://fonts.googleapis.com/css?family=Bebas+Neue);
+
+.main {
+    display: flex;
+    height: 75%;
+    align-items:center;
+    justify-content: center;
+}
+.clock {
+    display: inline;
+    color: #696868;
+    font-family: "Bebas Neue", sans-serif;
+}
+.hour {
+    font-size: 50vw;
+    font-weight: 700;
+}
+.second {
+    font-size: 30px;
+    font-weight: 500;
+    color: #a2a0a045;
+    margin-top: -30%;
+}
+@media (min-width: $break-small) {
+    .hour {
+        font-size: 160px;
+        font-weight: 700;
+    }
+    .second {
+        margin-top: -10%;
+    }
+}

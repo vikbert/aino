@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from "react";
-import "./index.css";
 
 const Clock = () => {
     const [trigger, setTrigger] = useState(true);

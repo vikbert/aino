@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import './App.scss';
+import './style.scss';
 import classNames from 'classnames';
 import MenuIcon from "./components/MenuIcon";
 import Clock from "./components/Clock";
