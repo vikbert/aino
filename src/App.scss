@@ -22,18 +22,12 @@ body {
 }
 
 .wrapper {
-    height: 480px;
-    width: 320px;
+    width: 100%;
+    margin: 0;
+    height: 100vh;
     background: #2e394b;
     overflow: hidden;
     position: relative;
-    margin: 20px auto 0;
-
-    @media screen and (max-width: $break-small) {
-        width: 100%;
-        margin: 0;
-        height: 100vh;
-    }
 }
 
 section {
