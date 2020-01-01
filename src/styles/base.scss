@@ -1,11 +1,15 @@
 .main {
     display: flex;
-    height: 75%;
     justify-content: center;
     align-items:center;
+    height: 75%;
     padding: 10px;
 }
-
+.time-display {
+    display: inline;
+    color: #696868;
+    font-family: "Bebas Neue", sans-serif;
+}
 .centered {
     text-align: center;
 }

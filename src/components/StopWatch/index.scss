@@ -1,16 +1,43 @@
+$timer-display-line-height: 100px;
 .timer-window {
     text-align: center;
-    font-size: 40px;
-    border: 1px solid yellow;
+    font-size: 2rem;
+    height: $timer-display-line-height;
+    line-height: $timer-display-line-height;
+    margin: $default-gutters;
+}
+
+.timer-display {
+    color: #ffffff;
+    font-size: 83px;
 }
 
 .timer-options {
     display: flex;
     justify-content: space-evenly;
-    
 }
+
+$time-option-height: 60px;
 .timer-option {
-    width: 80px;
-    height: 80px;
-    border: 1px solid yellow;
+    margin: $default-gutters;
+    width: 140px;
+    height: $time-option-height;
+    line-height: $time-option-height;
+    font-size: $time-option-height / 3;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 10px;
+    border: 0;
+    box-shadow: 0px 4px 8px #9c5b18bf;
+    background-color: #ffffff;
+
+    &:focus {
+        outline: none;
+    }
+
+    &:active {
+        color: #1f252d;
+        box-shadow: none;
+        transform: scale(.98);
+    }
 }
