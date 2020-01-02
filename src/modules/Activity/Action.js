@@ -6,16 +6,12 @@ const Action = () => {
 
     return (<>
         <div className="action-icons">
-            <button className="button">
-                <span>Search</span>
-                <span className="icon-stopwatch"
-                      onClick={() => setAction('search')}/>
+            <button className="button" onClick={() => setAction('search')}>
+                <span className="button-text">Search</span>
             </button>
 
-            <button className="button">
-                <span>New</span>
-                <span className="icon-calendar"
-                      onClick={() => setAction('insert')}/>
+            <button className="button" onClick={() => setAction('new')}>
+                <span className="button-text">New</span>
             </button>
         </div>
         <div className="action-inputs">
@@ -25,7 +21,7 @@ const Action = () => {
                        placeholder={'search'}/>
             )}
 
-            {action && action === 'insert' && (<>
+            {action && action === 'new' && (<>
                 <input className={"input"}
                        type="text"
                        placeholder={'add new activity'}/>

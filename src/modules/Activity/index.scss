@@ -5,16 +5,15 @@
 .action-icons {
     display: flex;
     justify-content: space-evenly;
-    font-size: 40px;
-    color: white;
 
-    span, button {
-        padding: 4px 5px;
-    }
+    $button-height: 40px;
 
     button {
         font-family: "Bebas Neue", sans-serif;
-        background-color: #FF652F;
+        height: $button-height;
+        width: 160px;
+        line-height: $button-height;
+        font-size: 16px;
     }
 }
 
@@ -24,4 +23,5 @@
 
 .action-inputs {
     text-align: center;
+    margin: $default-gutters;
 }
