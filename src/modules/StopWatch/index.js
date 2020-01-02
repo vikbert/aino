@@ -10,11 +10,11 @@ const clearIntervals = () => {
 
 const StopWatch = ({toggleBgColor}) => {
     const [seconds, setSeconds] = useState(0);
-    
+
     const reset = () => {
         clearIntervals();
         setSeconds(0);
-    }
+    };
 
     const countDown = (counter) => {
         clearIntervals();
@@ -75,7 +75,7 @@ const StopWatch = ({toggleBgColor}) => {
                 <button className="button timer-option" onClick={reset}>
                     {"Clear"}
                 </button>
-                <TimerOptionButton optionValue={5}/>
+                <TimerOptionButton optionValue={0.1}/>
             </div>
             <div className="timer-options">
                 <TimerOptionButton optionValue={25}/>
