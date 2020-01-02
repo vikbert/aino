@@ -13,7 +13,6 @@ const Clock = () => {
     return (
         <div className="container clock-container">
             <div className="time-display hour">{today.toString().substr(15, 6)}</div>
-            <div className="time-display second">{today.toString().substr(22, 2)}</div>
         </div>
     );
 };

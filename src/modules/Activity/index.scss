@@ -5,9 +5,9 @@
 .action-icons {
     display: flex;
     justify-content: space-evenly;
+    margin-top: 10px;
 
     $button-height: 40px;
-
     button {
         font-family: "Bebas Neue", sans-serif;
         height: $button-height;
@@ -15,10 +15,6 @@
         line-height: $button-height;
         font-size: 16px;
     }
-}
-
-.active {
-    color: yellow;
 }
 
 .action-inputs {

@@ -74,6 +74,7 @@ section {
         margin: 0;
         line-height: 70px;
         -webkit-user-select: none;
+        cursor: pointer;
     }
 }
 
@@ -82,37 +83,13 @@ section {
         &.one {
             -webkit-transition-delay: 0s;
         }
-
-        &.two {
-            -webkit-transition-delay: 0.1s;
-        }
-
-        &.three {
-            -webkit-transition-delay: 0.1s;
-        }
-
-        &.four {
-            -webkit-transition-delay: 0.05s;
-        }
     }
 }
 
 .page-two {
     section {
-        &.one {
-            -webkit-transition-delay: 0s;
-        }
-
         &.two {
-            -webkit-transition-delay: 0.05s;
-        }
-
-        &.three {
-            -webkit-transition-delay: 0.1s;
-        }
-
-        &.four {
-            -webkit-transition-delay: 0.05s;
+            -webkit-transition-delay: 0s;
         }
     }
 }
@@ -127,18 +104,6 @@ section {
 
 .page-four {
     section {
-        &.one {
-            -webkit-transition-delay: 1s;
-        }
-
-        &.two {
-            -webkit-transition-delay: 1s;
-        }
-
-        &.three {
-            -webkit-transition-delay: 1s;
-        }
-
         &.four {
             -webkit-transition-delay: 0s;
         }
