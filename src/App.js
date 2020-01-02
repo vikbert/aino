@@ -3,12 +3,11 @@ import './style.scss';
 import classNames from 'classnames';
 import Clock from "./modules/Clock";
 import StopWatch from "./modules/StopWatch";
-import Activity from "./modules/Activity";
 
 const pages = ["one", "two", "three", "four"];
 
 function App() {
-    const [isOverview, setIsOverview] = useState(false);
+    const [isOverview, setIsOverview] = useState(true);
     const [warning, setWarning] = useState(false);
 
     const toggleMenu = () => {
@@ -16,7 +15,12 @@ function App() {
         document.getElementsByClassName('wrapper')[0].classList.toggle('menu-open');
     };
 
-    const togglePageBgColor = () => {
+    const togglePageBgColor = (reset = null) => {
+        if (reset) {
+            setWarning(false);
+            return;
+        }
+
         setWarning((prevWarning) => !prevWarning);
     };
 
@@ -52,8 +56,8 @@ function App() {
     };
 
     return (
-        <div className={classNames("wrapper")}>
-            <section className="one after">
+        <div className={classNames("wrapper", isOverview && "menu-open")}>
+            <section className="one">
                 <h1 onClick={() => handleOnClickHeader(0)}>
                     <span className="icon-equalizer"/>
                 </h1>
@@ -66,11 +70,11 @@ function App() {
                 <StopWatch toggleBgColor={togglePageBgColor}/>
             </section>
 
-            <section className="three">
+            <section className="three ">
                 <h1 onClick={() => handleOnClickHeader(2)}>
                     <span className="icon-calendar"/>
                 </h1>
-                <Activity/>
+                {/*<Activity/>*/}
             </section>
 
             <section className="four">

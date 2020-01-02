@@ -14,6 +14,7 @@ const StopWatch = ({toggleBgColor}) => {
     const reset = () => {
         clearIntervals();
         setSeconds(0);
+        toggleBgColor(true);
     };
 
     const countDown = (counter) => {
