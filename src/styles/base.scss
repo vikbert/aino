@@ -1,7 +1,7 @@
 .container {
     height: 100%;
+    margin: 0 20px;
 }
-
 .time-display {
     display: inline;
     color: #696868;
@@ -12,7 +12,6 @@
     color: #ffffff;
     background-color: #1f252d !important;
 }
-
 .warning {
     color: #9F6000 !important;
     background-color: #FEEFB3 !important;
@@ -28,4 +27,9 @@
 .error {
     color: #D8000C;
     background-color: #FFBABA;
+}
+.input {
+    width: 100%;
+    margin-top: $default-gutters;
+    margin-right: $default-gutters;
 }

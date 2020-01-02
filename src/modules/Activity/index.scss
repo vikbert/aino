@@ -1,0 +1,21 @@
+.module-activity {
+    color: white;
+}
+.action-icons {
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 40px;
+    span {
+        padding: 20px;
+        cursor: pointer;
+        &:hover {
+            color: yellow;
+        }
+        &:active {
+            color: #dedede;
+        }
+    }
+}
+.action-inputs {
+    text-align: center;
+}

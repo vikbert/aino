@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
 import './style.scss';
 import classNames from 'classnames';
-import MenuIcon from "./components/MenuIcon";
-import Clock from "./components/Clock";
-import StopWatch from "./components/StopWatch";
+import MenuIcon from "./modules/MenuIcon";
+import Clock from "./modules/Clock";
+import StopWatch from "./modules/StopWatch";
+import Activity from "./modules/Activity";
 
 const pages = ["one", "two", "three", "four"];
 
@@ -22,10 +23,10 @@ function App() {
 
     const goToPage = (pageNumber) => {
         setIsOpen(false);
-        
+
         const sections = document.getElementsByTagName('section');
         const wrapper = document.getElementsByClassName('wrapper')[0];
-        
+
         // "sections" is NOT an array, but HTMLCollection. 
         // It need to be converted to an array
         Array.from(sections).forEach((section, sectionIndex) => {
@@ -36,7 +37,7 @@ function App() {
         });
 
         console.log(wrapper.classList);
-        wrapper.classList.remove('menu-open','page-one','page-two');
+        wrapper.classList.remove('menu-open', 'page-one', 'page-two');
         console.log(wrapper.classList);
         wrapper.classList.add('page-' + pages[pageNumber]);
         console.log(wrapper.classList);
@@ -46,27 +47,28 @@ function App() {
         <div className={classNames("wrapper")}>
             <MenuIcon clickCallback={toggleMenu} checked={isOpen}/>
 
-            <section className="one" onClick={() => goToPage(0)}>
+            <section className="one after" onClick={() => goToPage(0)}>
                 <h1>
                     <span className="icon-equalizer"/>
                 </h1>
             </section>
-            
-            <section className={classNames("two", warning && "default")}
+
+            <section className={classNames("two after", warning && "default")}
                      onClick={() => goToPage(1)}>
                 <h1>
                     <span className="icon-stopwatch"/>
                 </h1>
                 <StopWatch toggleBgColor={togglePageBgColor}/>
             </section>
-            
+
             <section className="three" onClick={() => goToPage(2)}>
                 <h1>
                     <span className="icon-calendar"/>
                 </h1>
+                <Activity/>
             </section>
-            
-            <section className="four" onClick={() => goToPage(3)}>
+
+            <section className="four after" onClick={() => goToPage(3)}>
                 <h1>
                     <span className="icon-alarm"/>
                 </h1>

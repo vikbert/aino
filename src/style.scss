@@ -1,8 +1,14 @@
+// ------------------------
+// Reusable  
+// ------------------------
 @import "./styles/variables";
-@import "styles/fonts/fonts";
+@import "./styles/fonts/fonts";
 @import "./styles/base";
-
+// ------------------------
+// Modules  
+// ------------------------  
 @import "./App";
-@import "./components/Clock";
-@import "./components/MenuIcon";
-@import "./components/StopWatch";
+@import "./modules/Clock";
+@import "./modules/MenuIcon";
+@import "./modules/StopWatch";
+@import "./modules/Activity";
