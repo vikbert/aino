@@ -1,22 +1,27 @@
 .module-activity {
     color: white;
 }
+
 .action-icons {
     display: flex;
     justify-content: space-evenly;
     font-size: 40px;
+    color: white;
+
     span, button {
-        color: white;
         padding: 4px 5px;
     }
+
     button {
         font-family: "Bebas Neue", sans-serif;
         background-color: #FF652F;
     }
 }
+
 .active {
     color: yellow;
 }
+
 .action-inputs {
     text-align: center;
 }
