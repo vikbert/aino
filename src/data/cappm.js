@@ -1,56 +1,56 @@
 export const comments = [
     {
-        comment: "AP0044187;Refinement",
+        content: "AP0044187;Refinement",
         tag: "refinement,",
         category: 1,
     },
     {
-        comment: "AP0044187;Daily-StandUp-Pauschal",
+        content: "AP0044187;Daily-StandUp-Pauschal",
         tag: "daily, standup, pauschal",
         category: 1,
     },
     {
-        comment: "AP0044187;CARBAR-80;User Profile",
+        content: "AP0044187;CARBAR-80;User Profile",
         tag: "carbar, ticket, bugfix, story, tech",
         category: 2,
     },
     {
-        comment: "Auswertung Kennenlernen Termin Cross Function",
+        content: "Auswertung Kennenlernen Termin Cross Function",
         tag: "team, meeting",
         category: 3,
     },
     {
-        comment: "Kennenlearnen Workshop CrossFunktion",
+        content: "Kennenlearnen Workshop CrossFunktion",
         tag: "team, meeting",
         category: 3,
     },
     {
-        comment: "Kim updates Meeting",
+        content: "Kim updates Meeting",
         tag: "team, meeting",
         category: 3,
     },
     {
-        comment: "Dev-Jourfix",
+        content: "Dev-Jourfix",
         tag: "dev, jourfix",
         category: 4,
     },
     {
-        comment: "IT4YOU: MacBook",
+        content: "IT4YOU: MacBook",
         tag: "it4you, admin",
         category: 4,
     },
     {
-        comment: "Deutschkurs",
+        content: "Deutschkurs",
         tag: "kurs, schulung",
         category: 5,
     },
     {
-        comment: "Urlaub",
+        content: "Urlaub",
         tag: "urlaub, abwesentheit",
         category: 6,
     },
     {
-        comment: "Krankmeldung",
+        content: "Krankmeldung",
         tag: "abwesentheit, krank",
         category: 6,
     },

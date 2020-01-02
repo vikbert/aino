@@ -1,13 +1,14 @@
 import React, {useState} from 'react';
-import './style.scss';
+import './main.scss';
 import classNames from 'classnames';
 import Clock from "./modules/Clock";
 import StopWatch from "./modules/StopWatch";
+import Activity from "./modules/Activity";
 
 const pages = ["one", "two", "three", "four"];
 
 function App() {
-    const [isOverview, setIsOverview] = useState(true);
+    const [isOverview, setIsOverview] = useState(false);
     const [warning, setWarning] = useState(false);
 
     const toggleMenu = () => {
@@ -63,21 +64,21 @@ function App() {
                 </h1>
             </section>
 
-            <section className={classNames("two", warning && "default")}>
+            <section className={classNames("two after", warning && "default")}>
                 <h1 onClick={() => handleOnClickHeader(1)}>
                     <span className="icon-stopwatch"/>
                 </h1>
                 <StopWatch toggleBgColor={togglePageBgColor}/>
             </section>
 
-            <section className="three ">
+            <section className="three">
                 <h1 onClick={() => handleOnClickHeader(2)}>
                     <span className="icon-calendar"/>
                 </h1>
-                {/*<Activity/>*/}
+                <Activity/>
             </section>
 
-            <section className="four">
+            <section className="four after">
                 <h1 onClick={() => handleOnClickHeader(3)}>
                     <span className="icon-alarm"/>
                 </h1>

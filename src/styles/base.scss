@@ -28,11 +28,6 @@
     color: #D8000C;
     background-color: #FFBABA;
 }
-.input {
-    width: 100%;
-    margin-top: $default-gutters;
-    margin-right: $default-gutters;
-}
 .button {
     margin: $default-gutters;
     text-align: center;
@@ -50,5 +45,11 @@
         color: #1f252d;
         box-shadow: none;
         transform: scale(.98);
+    }
+}
+input {
+    :active {
+        border: none;
+        outline: none;
     }
 }

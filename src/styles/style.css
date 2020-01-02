@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('icomoon.eot?v1og6i');
-  src:  url('icomoon.eot?v1og6i#iefix') format('embedded-opentype'),
-  url('icomoon.ttf?v1og6i') format('truetype'),
-  url('icomoon.woff?v1og6i') format('woff'),
-  url('icomoon.svg?v1og6i#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?aopatf');
+  src:  url('fonts/icomoon.eot?aopatf#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?aopatf') format('truetype'),
+    url('fonts/icomoon.woff?aopatf') format('woff'),
+    url('fonts/icomoon.svg?aopatf#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,6 +25,21 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-cancel:before {
+  content: "\e902";
+}
+.icon-close1:before {
+  content: "\e902";
+}
+.icon-remove:before {
+  content: "\e902";
+}
+.icon-dismiss:before {
+  content: "\e902";
+}
+.icon-search1:before {
+  content: "\e900";
+}
 .icon-alarm:before {
   content: "\e950";
 }
@@ -33,6 +48,9 @@
 }
 .icon-calendar:before {
   content: "\e953";
+}
+.icon-search:before {
+  content: "\e986";
 }
 .icon-equalizer:before {
   content: "\e992";

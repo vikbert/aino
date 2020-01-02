@@ -1,34 +1,26 @@
 import React, {useState} from 'react';
 
 const Action = () => {
+    const [searchInput, setSearchInput] = useState('');
 
-    const [action, setAction] = useState(null);
+    const cancelSearchInput = () => {
+        setSearchInput('');
+    };
+
+    const handleOnChange = (e) => {
+        setSearchInput(e.currentTarget.value);
+    };
 
     return (<>
-        <div className="action-icons">
-            <button className="button" onClick={() => setAction('search')}>
-                <span className="button-text">Search</span>
-            </button>
-
-            <button className="button" onClick={() => setAction('new')}>
-                <span className="button-text">New</span>
-            </button>
-        </div>
-        <div className="action-inputs">
-            {action && action === 'search' && (
-                <input className={"input"}
-                       type="text"
-                       placeholder={'search'}/>
-            )}
-
-            {action && action === 'new' && (<>
-                <input className={"input"}
-                       type="text"
-                       placeholder={'add new activity'}/>
-                <input className={"input"}
-                       type="text"
-                       placeholder={'add tags'}/>
-            </>)}
+        <div className="action-search">
+            <input className={"search-input"}
+                   type="text"
+                   value={searchInput}
+                   onChange={handleOnChange}
+                   placeholder={'Search'}/>
+            <div className="search-icon" onClick={cancelSearchInput}>
+                <span className={searchInput === '' ? "icon-search1":  "icon-cancel"}/>
+            </div>
         </div>
     </>);
 };
