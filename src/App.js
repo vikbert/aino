@@ -5,12 +5,15 @@ import MenuIcon from "./components/MenuIcon";
 import Clock from "./components/Clock";
 import StopWatch from "./components/StopWatch";
 
+const pages = ["one", "two", "three", "four"];
+
 function App() {
     const [isOpen, setIsOpen] = useState(false);
     const [warning, setWarning] = useState(false);
 
     const toggleMenu = () => {
         setIsOpen(prevValue => !prevValue);
+        document.getElementsByClassName('wrapper')[0].classList.toggle('menu-open');
     };
 
     const togglePageBgColor = () => {
@@ -18,8 +21,11 @@ function App() {
     };
 
     const goToPage = (pageNumber) => {
+        setIsOpen(false);
+        
         const sections = document.getElementsByTagName('section');
-
+        const wrapper = document.getElementsByClassName('wrapper')[0];
+        
         // "sections" is NOT an array, but HTMLCollection. 
         // It need to be converted to an array
         Array.from(sections).forEach((section, sectionIndex) => {
@@ -29,11 +35,15 @@ function App() {
             }
         });
 
-        setIsOpen(false);
+        console.log(wrapper.classList);
+        wrapper.classList.remove('menu-open','page-one','page-two');
+        console.log(wrapper.classList);
+        wrapper.classList.add('page-' + pages[pageNumber]);
+        console.log(wrapper.classList);
     };
 
     return (
-        <div className={classNames("wrapper", isOpen && "menu-open")}>
+        <div className={classNames("wrapper")}>
             <MenuIcon clickCallback={toggleMenu} checked={isOpen}/>
 
             <section className="one" onClick={() => goToPage(0)}>

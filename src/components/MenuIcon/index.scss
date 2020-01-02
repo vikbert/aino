@@ -3,11 +3,11 @@
 }
 
 .menu-open-button {
-    padding: 10px;
     z-index: 10;
     position: absolute;
     width: 25px;
     height: 25px;
+    padding: 20px;
     cursor: pointer;
     color: #ffffff;
     -webkit-transform: translate3d(0, 0, 0);
@@ -24,7 +24,7 @@
     left: 50%;
     display: block;
     width: 25px;
-    height: 2px;
+    height: 3px;
     background: #ffffff;
     margin-left: -12.5px;
     margin-top: -1.5px;
