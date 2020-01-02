@@ -54,7 +54,7 @@ const StopWatch = ({toggleBgColor}) => {
 
     const TimerOptionButton = ({optionValue}) => {
         return (
-            <button className="timer-option" onClick={() => countDown(optionValue * 60)}>
+            <button className="button timer-option" onClick={() => countDown(optionValue * 60)}>
                 {`${optionValue} m`}
             </button>
         );
@@ -72,7 +72,7 @@ const StopWatch = ({toggleBgColor}) => {
                 </div>
             </div>
             <div className="timer-options">
-                <button className="timer-option" onClick={reset}>
+                <button className="button timer-option" onClick={reset}>
                     {"Clear"}
                 </button>
                 <TimerOptionButton optionValue={5}/>

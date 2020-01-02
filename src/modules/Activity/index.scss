@@ -5,16 +5,17 @@
     display: flex;
     justify-content: space-evenly;
     font-size: 40px;
-    span {
-        padding: 20px;
-        cursor: pointer;
-        &:hover {
-            color: yellow;
-        }
-        &:active {
-            color: #dedede;
-        }
+    span, button {
+        color: white;
+        padding: 4px 5px;
     }
+    button {
+        font-family: "Bebas Neue", sans-serif;
+        background-color: #FF652F;
+    }
+}
+.active {
+    color: yellow;
 }
 .action-inputs {
     text-align: center;

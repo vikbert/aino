@@ -6,10 +6,17 @@ const Action = () => {
 
     return (<>
         <div className="action-icons">
-            <span className="icon-stopwatch"
-                  onClick={() => setAction('search')}/>
-            <span className="icon-calendar"
-                  onClick={() => setAction('insert')}/>
+            <button className="button">
+                <span>Search</span>
+                <span className="icon-stopwatch"
+                      onClick={() => setAction('search')}/>
+            </button>
+
+            <button className="button">
+                <span>New</span>
+                <span className="icon-calendar"
+                      onClick={() => setAction('insert')}/>
+            </button>
         </div>
         <div className="action-inputs">
             {action && action === 'search' && (
