@@ -76,7 +76,7 @@ const StopWatch = ({toggleBgColor}) => {
             </div>
             <div className="timer-options">
                 <button className="button timer-option" onClick={reset}>
-                    {"Clear"}
+                    {"00 m"}
                     <span className="icon-spinner11"/>
                 </button>
                 <TimerOptionButton optionValue={3}>

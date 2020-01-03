@@ -60,7 +60,7 @@ function App() {
         <div className={classNames("wrapper", isOverview && "menu-open")}>
             <section className="one">
                 <h1 onClick={() => handleOnClickHeader(0)}>
-                    <span className="icon-equalizer"/>
+                    <span className="icon-users"/>
                 </h1>
             </section>
 
