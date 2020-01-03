@@ -1,5 +1,5 @@
 import React from 'react';
-import alertFile from './count_down.mp3';
+import alertFile from './email.aac';
 
 const AlertCountDown = () => (<>
     <iframe

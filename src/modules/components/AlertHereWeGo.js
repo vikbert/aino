@@ -1,5 +1,5 @@
 import React from 'react';
-import alertFile from './here_we_go.mp3';
+import alertFile from './email.aac';
 
 const AlertHereWeGo = () => (<>
     <iframe

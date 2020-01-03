@@ -1,11 +1,17 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import AlertCountDown from "../components/AlertCountDown";
 import AlertHereWeGo from "../components/AlertHereWeGo";
+import audioFile from './here_we_go.mp3';
 
 let intervals = [];
 const clearIntervals = () => {
     intervals.forEach(clearInterval);
     intervals = [];
+};
+
+const playAudio = () => {
+    var audioElement = new Audio(audioFile);
+    audioElement.play();
 };
 
 const Fitness = () => {
@@ -43,7 +49,7 @@ const Fitness = () => {
                 setAlertRestDone(true);
                 console.log('alert: rest completed');
                 clearIntervals(intervalId);
-                
+
                 setTimeout(() => {
                     setAlertRestDone(false);
                     setAlertTrainingDone(false);
@@ -61,6 +67,27 @@ const Fitness = () => {
 
         countDown(totalSeconds);
     };
+
+    useEffect(() => {
+        window.addEventListener('load', function () {
+            var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            var source = audioCtx.createBufferSource();
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'https://www.pacdv.com/sounds/voices/nice-work.wav');
+            xhr.responseType = 'arraybuffer';
+            xhr.addEventListener('load', function (r) {
+                audioCtx.decodeAudioData(
+                    xhr.response,
+                    function (buffer) {
+                        source.buffer = buffer;
+                        source.connect(audioCtx.destination);
+                        source.loop = false;
+                    });
+                source.start(0);
+            });
+            xhr.send();
+        });
+    });
 
     return (
         <div className="container fitness">
