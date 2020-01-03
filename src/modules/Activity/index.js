@@ -16,7 +16,7 @@ const Activity = () => {
     const getFilteredComments = () => {
         return comments.filter((comment) => {
             const category = categories[comment.category];
-            const searchTarget = comment.tag.concat(category.name, category.channel);
+            const searchTarget = comment.tag.concat(comment.content, category.name, category.channel);
 
             return searchTarget.toLowerCase().indexOf(searchInput.toLowerCase()) !== -1;
         });
