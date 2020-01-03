@@ -13,7 +13,14 @@ const Activity = () => {
         setSearchInput(e.currentTarget.value);
     };
 
-    console.log(comments);
+    const getFilteredComments = () => {
+        return comments.filter((comment) => {
+            const category = categories[comment.category];
+            const searchTarget = comment.tag.concat(category.name, category.channel);
+
+            return searchTarget.toLowerCase().indexOf(searchInput.toLowerCase()) !== -1;
+        });
+    };
 
     return (
         <div className="container module-activity">
@@ -28,13 +35,9 @@ const Activity = () => {
                 </div>
             </div>
             <div className="activity-list">
-                {comments
-                    .filter((comment) => {
-                        return comment.tag.toLowerCase().indexOf(searchInput.toLowerCase()) != -1
-                    })
-                    .map((comment, index) => (<>
-                        <ActivityItem key={index} comment={comment} category={categories[comment.category]}/>
-                    </>))}
+                {getFilteredComments().map((comment, index) => (
+                    <ActivityItem key={index} comment={comment} category={categories[comment.category]}/>
+                ))}
             </div>
         </div>
     );
