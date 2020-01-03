@@ -3,8 +3,9 @@ import './main.scss';
 import classNames from 'classnames';
 import Clock from "./modules/Clock";
 import StopWatch from "./modules/StopWatch";
-import Activity from "./modules/Activity";
 import Social from "./modules/Social";
+import Fitness from "./modules/Fitness";
+import Activity from "./modules/Activity";
 
 const pages = ["one", "two", "three", "four"];
 
@@ -61,9 +62,9 @@ function App() {
         <div className={classNames("wrapper", isOverview && "menu-open")}>
             <section className="one">
                 <h1 onClick={() => handleOnClickHeader(0)}>
-                    <span className="icon-users"/>
+                    <span className="icon-accessibility"/>
                 </h1>
-                <Social/>
+                <Fitness/>
             </section>
 
             <section className={classNames("two after", warning && "default")}>
@@ -73,7 +74,7 @@ function App() {
                 <StopWatch toggleBgColor={togglePageBgColor}/>
             </section>
 
-            <section className="three">
+            <section className="three after">
                 <h1 onClick={() => handleOnClickHeader(2)}>
                     <span className="icon-calendar"/>
                 </h1>

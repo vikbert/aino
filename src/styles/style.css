@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?85v0zz');
-  src:  url('fonts/icomoon.eot?85v0zz#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?85v0zz') format('truetype'),
-    url('fonts/icomoon.woff?85v0zz') format('woff'),
-    url('fonts/icomoon.svg?85v0zz#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?2r83py');
+  src:  url('fonts/icomoon.eot?2r83py#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?2r83py') format('truetype'),
+    url('fonts/icomoon.woff?2r83py') format('woff'),
+    url('fonts/icomoon.svg?2r83py#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -52,6 +52,9 @@
 .icon-alarm:before {
   content: "\e950";
 }
+.icon-bell:before {
+  content: "\e951";
+}
 .icon-stopwatch:before {
   content: "\e952";
 }
@@ -63,6 +66,9 @@
 }
 .icon-users:before {
   content: "\e972";
+}
+.icon-hour-glass:before {
+  content: "\e979";
 }
 .icon-spinner11:before {
   content: "\e984";
@@ -76,8 +82,17 @@
 .icon-mug:before {
   content: "\e9a2";
 }
+.icon-rocket:before {
+  content: "\e9a5";
+}
+.icon-accessibility:before {
+  content: "\e9b2";
+}
 .icon-grin:before {
   content: "\e9e9";
+}
+.icon-circle-down:before {
+  content: "\ea43";
 }
 .icon-radio-checked:before {
   content: "\ea54";

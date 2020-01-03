@@ -39,6 +39,7 @@ const Activity = () => {
                     <ActivityItem key={index} comment={comment} category={categories[comment.category]}/>
                 ))}
             </div>
+            <button className="button-add">{"+"}</button>
         </div>
     );
 };
