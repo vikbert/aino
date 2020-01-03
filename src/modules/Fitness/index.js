@@ -1,7 +1,4 @@
-import React, {useEffect, useState} from 'react';
-import AlertCountDown from "../components/AlertCountDown";
-import AlertHereWeGo from "../components/AlertHereWeGo";
-import audioFile from './here_we_go.mp3';
+import React, {useState} from 'react';
 
 let intervals = [];
 const clearIntervals = () => {
@@ -9,17 +6,10 @@ const clearIntervals = () => {
     intervals = [];
 };
 
-const playAudio = () => {
-    var audioElement = new Audio(audioFile);
-    audioElement.play();
-};
-
 const Fitness = () => {
     const [trainingTime, setTrainingTime] = useState(0);
     const [restTime, setRestTime] = useState(0);
     const [repeat, setRepeat] = useState(0);
-    const [alertTrainingDone, setAlertTrainingDone] = useState(null);
-    const [alertRestDone, setAlertRestDone] = useState(null);
 
     const handleChangeTrainingTime = (event) => {
         setTrainingTime(parseInt(event.currentTarget.value));
@@ -29,6 +19,12 @@ const Fitness = () => {
     };
     const handleChangeRepeat = (event) => {
         setRepeat(parseInt(event.currentTarget.value));
+    };
+
+    const playAlert = () => {
+        window.gold.play(() => {
+            console.log('play alert');
+        });
     };
 
     const countDown = (counterInSeconds) => {
@@ -41,19 +37,14 @@ const Fitness = () => {
             console.log('current counterInSeconds: ' + counterInSeconds);
 
             if (counterInSeconds === alertOneAt) {
+                playAlert();
                 console.log('alert: 5 seconds countdown');
-                setAlertTrainingDone(true);
             }
 
             if (counterInSeconds === 0) {
-                setAlertRestDone(true);
                 console.log('alert: rest completed');
                 clearIntervals(intervalId);
-
-                setTimeout(() => {
-                    setAlertRestDone(false);
-                    setAlertTrainingDone(false);
-                }, 2000);
+                playAlert();
             }
         }, 1000);
 
@@ -61,33 +52,10 @@ const Fitness = () => {
     };
 
     const handleStartClick = () => {
-        const totalSeconds = (trainingTime + restTime) * 1;
-        console.log('#### +', (trainingTime + restTime));
-        console.log('#### +', totalSeconds);
 
+        const totalSeconds = (trainingTime + restTime) * 1;
         countDown(totalSeconds);
     };
-
-    useEffect(() => {
-        window.addEventListener('load', function () {
-            var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-            var source = audioCtx.createBufferSource();
-            var xhr = new XMLHttpRequest();
-            xhr.open('GET', 'https://www.pacdv.com/sounds/voices/nice-work.wav');
-            xhr.responseType = 'arraybuffer';
-            xhr.addEventListener('load', function (r) {
-                audioCtx.decodeAudioData(
-                    xhr.response,
-                    function (buffer) {
-                        source.buffer = buffer;
-                        source.connect(audioCtx.destination);
-                        source.loop = false;
-                    });
-                source.start(0);
-            });
-            xhr.send();
-        });
-    });
 
     return (
         <div className="container fitness">
@@ -129,9 +97,6 @@ const Fitness = () => {
             >
                 start
             </button>
-            {alertTrainingDone && <AlertCountDown/>}
-            {alertRestDone && <AlertHereWeGo/>}
-
         </div>
     );
 

@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import alertfile from './bell.mp3';
 
 let intervals = [];
 const clearIntervals = () => {
@@ -11,7 +10,6 @@ const clearIntervals = () => {
 
 const StopWatch = ({toggleBgColor}) => {
     const [seconds, setSeconds] = useState(0);
-    const [alert, setAlert] = useState(null);
 
     const reset = () => {
         clearIntervals();
@@ -27,12 +25,10 @@ const StopWatch = ({toggleBgColor}) => {
             counter--;
             setSeconds(counter);
             if (counter <= 5) {
-                setAlert(true);
                 toggleBgColor();
             }
             if (counter === 0) {
                 clearInterval(intervalId);
-                setAlert(false);
             }
         }, 1000);
 
@@ -73,13 +69,6 @@ const StopWatch = ({toggleBgColor}) => {
 
     return (
         <div className={classNames("container")}>
-            {alert && (<>
-                <iframe
-                    style={{display: "none"}}
-                    src={alertfile}
-                    allow="autoplay" id="audio">
-                </iframe>
-            </>)}
             <div className="timer-window">
                 <div className="time-display timer-display">
                     {secondsToTime(seconds)}
