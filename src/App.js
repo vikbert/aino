@@ -5,7 +5,7 @@ import Clock from "./modules/Clock";
 import StopWatch from "./modules/StopWatch";
 import Fitness from "./modules/Fitness";
 import Activity from "./modules/Activity";
-import alertFile from './data/email.aac';
+import alertFile from './data/alert.aac';
 
 const pages = ["one", "two", "three", "four"];
 
@@ -51,7 +51,7 @@ function App() {
     };
 
     const initAudioFile = () => {
-        window.gold = new Audio(alertFile);
+        window.alert = new Audio(alertFile);
         const nothing = new Audio("http://touchbasicapp.com/nothing.wav");
 
         const tapped = function() {

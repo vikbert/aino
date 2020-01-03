@@ -22,7 +22,7 @@ const Fitness = () => {
     };
 
     const playAlert = () => {
-        window.gold.play(() => {
+        window.alert.play(() => {
             console.log('play alert');
         });
     };

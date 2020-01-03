@@ -14,7 +14,7 @@ const StopWatch = ({toggleBgColor}) => {
     const reset = () => {
         clearIntervals();
         setSeconds(0);
-        toggleBgColor(true);
+        window.alert.play();
     };
 
     const countDown = (counter) => {
@@ -28,6 +28,7 @@ const StopWatch = ({toggleBgColor}) => {
                 toggleBgColor();
             }
             if (counter === 0) {
+                window.alert.play();
                 clearInterval(intervalId);
             }
         }, 1000);
@@ -79,7 +80,7 @@ const StopWatch = ({toggleBgColor}) => {
                     {"00 m"}
                     <span className="icon-spinner11"/>
                 </button>
-                <TimerOptionButton optionValue={0.1}>
+                <TimerOptionButton optionValue={3}>
                     <span className="icon-grin"/>
                 </TimerOptionButton>
             </div>
