@@ -53,16 +53,18 @@ const StopWatch = ({toggleBgColor}) => {
         return hours + ':' + minutes + ':' + seconds;
     };
 
-    const TimerOptionButton = ({optionValue}) => {
+    const TimerOptionButton = ({optionValue, children = null}) => {
         return (
             <button className="button timer-option" onClick={() => countDown(optionValue * 60)}>
-                {`${optionValue} m`}
+                {`${optionValue < 10 ? "0" + optionValue : optionValue} m`}
+                {children}
             </button>
         );
     };
 
     TimerOptionButton.propTypes = {
         optionValue: PropTypes.number.isRequired,
+        children: PropTypes.object,
     };
 
     return (
@@ -75,16 +77,27 @@ const StopWatch = ({toggleBgColor}) => {
             <div className="timer-options">
                 <button className="button timer-option" onClick={reset}>
                     {"Clear"}
+                    <span className="icon-spinner11"/>
                 </button>
-                <TimerOptionButton optionValue={5}/>
+                <TimerOptionButton optionValue={3}>
+                    <span className="icon-grin"/>
+                </TimerOptionButton>
             </div>
             <div className="timer-options">
-                <TimerOptionButton optionValue={25}/>
-                <TimerOptionButton optionValue={30}/>
+                <TimerOptionButton optionValue={10}>
+                    <span className="icon-mug"/>
+                </TimerOptionButton>
+                <TimerOptionButton optionValue={12}>
+                    <span className="icon-local_pizza"/>
+                </TimerOptionButton>
             </div>
             <div className="timer-options">
-                <TimerOptionButton optionValue={45}/>
-                <TimerOptionButton optionValue={60}/>
+                <TimerOptionButton optionValue={25}>
+                    <span className="icon-radio-checked"/>
+                </TimerOptionButton>
+                <TimerOptionButton optionValue={45}>
+                    <span className="icon-bubbles4"/>
+                </TimerOptionButton>
             </div>
         </div>
     );

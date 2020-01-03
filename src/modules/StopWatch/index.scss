@@ -23,4 +23,9 @@ $time-option-height: 60px;
     height: $time-option-height;
     line-height: $time-option-height;
     font-size: $time-option-height / 3;
+    span {
+        font-size: 22px;
+        padding-left: 10px;
+        color: #0000009c;
+    }
 }
