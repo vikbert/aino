@@ -59,9 +59,12 @@
             }
         }
     
+        $height-channel: 44px;
         .category-channel {
             text-align: right;
             font-size: 23px;
+            height: $height-channel;
+            line-height: $height-channel;
         }
     }
 }
