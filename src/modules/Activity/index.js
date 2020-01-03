@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import ActivityItem from "./ActivityItem";
-import {comments, categories} from "../../data/cappm";
+import {categories, comments} from "../../data/cappm";
 
 const Activity = () => {
     const [searchInput, setSearchInput] = useState('');
@@ -12,6 +12,8 @@ const Activity = () => {
     const handleOnChange = (e) => {
         setSearchInput(e.currentTarget.value);
     };
+
+    console.log(comments);
 
     return (
         <div className="container module-activity">
@@ -26,9 +28,13 @@ const Activity = () => {
                 </div>
             </div>
             <div className="activity-list">
-                {comments.map((comment, index) => (<>
-                    <ActivityItem key={index} comment={comment} category={categories[comment.category]}/>
-                </>))}
+                {comments
+                    .filter((comment) => {
+                        return comment.tag.toLowerCase().indexOf(searchInput.toLowerCase()) != -1
+                    })
+                    .map((comment, index) => (<>
+                        <ActivityItem key={index} comment={comment} category={categories[comment.category]}/>
+                    </>))}
             </div>
         </div>
     );
