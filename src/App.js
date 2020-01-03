@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import Clock from "./modules/Clock";
 import StopWatch from "./modules/StopWatch";
 import Activity from "./modules/Activity";
+import Social from "./modules/Social";
 
 const pages = ["one", "two", "three", "four"];
 
@@ -62,6 +63,7 @@ function App() {
                 <h1 onClick={() => handleOnClickHeader(0)}>
                     <span className="icon-users"/>
                 </h1>
+                <Social/>
             </section>
 
             <section className={classNames("two after", warning && "default")}>
