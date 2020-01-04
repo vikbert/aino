@@ -1,28 +1,12 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
+import {secondsToTime} from "../../utils/TimeHelper";
 
 let intervals = [];
 
 const cleanAllIntervals = () => {
     intervals.forEach(clearInterval);
     intervals = [];
-};
-const secondsToTime = (secondsValue) => {
-    let hours = Math.floor(secondsValue / 3600);
-    let minutes = Math.floor((secondsValue - (hours * 3600)) / 60);
-    let seconds = secondsValue - (hours * 3600) - (minutes * 60);
-
-    if (hours < 10) {
-        hours = "0" + hours;
-    }
-    if (minutes < 10) {
-        minutes = "0" + minutes;
-    }
-    if (seconds < 10) {
-        seconds = "0" + seconds;
-    }
-
-    return hours + ':' + minutes + ':' + seconds;
 };
 
 const CountDownDisplay = ({counterInSeconds, resetOption = () => {}}) => {
@@ -32,7 +16,7 @@ const CountDownDisplay = ({counterInSeconds, resetOption = () => {}}) => {
         if (value === 0) {
             return;
         }
-        
+
         setSeconds(counterInSeconds);
         const intervalId = setInterval(() => {
             counterInSeconds--;
@@ -45,7 +29,7 @@ const CountDownDisplay = ({counterInSeconds, resetOption = () => {}}) => {
 
         }, 1000);
         intervals.push(intervalId);
-    }, [counterInSeconds]);
+    }, [counterInSeconds, resetOption]);
 
     useEffect(() => {
         cleanAllIntervals();
