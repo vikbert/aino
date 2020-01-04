@@ -57,7 +57,7 @@ class CountDownDisplay extends Component {
     componentDidUpdate({counterInSeconds}, prevState, snapshot) {
         if (this.props.counterInSeconds
             && counterInSeconds !== this.props.counterInSeconds) {
-            this.countDown(3);
+            this.countDown(this.props.counterInSeconds);
         }
     }
 
