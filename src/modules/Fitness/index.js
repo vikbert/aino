@@ -26,7 +26,7 @@ const Fitness = () => {
 
         let counterInSeconds = trainingTime + restTime;
         console.log('Total: ' + counterInSeconds);
-        
+
         const alertOneAt = (counterInSeconds - trainingTime);
 
         const intervalId = setInterval(() => {
@@ -52,7 +52,7 @@ const Fitness = () => {
     const handleStartClick = () => {
         countDown();
     };
-    
+
     return (
         <div className="container fitness">
             <div className="select-wrapper icon-circle-down">
@@ -82,11 +82,11 @@ const Fitness = () => {
                 </select>
             </div>
 
-            <button type="button"
-                    className="button button-start"
-                    onClick={handleStartClick}>
-                start
-            </button>
+            <div
+                className="button button-start"
+                onClick={handleStartClick}>
+                <span>start</span>
+            </div>
         </div>
     );
 
