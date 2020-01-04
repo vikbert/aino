@@ -8,8 +8,6 @@
 
 $height-button: 90px;
 .button-start {
-    //position: fixed;
-    //bottom: 20px;
     margin-top: 20px;
     width: $height-button;
     height: $height-button;
@@ -31,7 +29,13 @@ button[disabled] {
 .select-wrapper {
     position: relative;
     width: 280px;
-    margin-top: 20px;
+    margin-top: 10px;
+}
+label {
+    color: #ffffff;
+    line-height: 18px;
+    padding-left: 4px;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .select-wrapper::before {
@@ -40,7 +44,7 @@ button[disabled] {
     pointer-events: none;
     position: absolute;
     right: 10px;
-    top: 20px;
+    top: 30px;
 }
 
 select {
@@ -55,7 +59,7 @@ select {
     cursor: pointer;
     font-family: 'Open Sans', sans-serif;
     font-size: 16px;
-    height: 60px;
+    height: 50px;
     outline: none;
     padding-left: 20px;
     width: 100%;

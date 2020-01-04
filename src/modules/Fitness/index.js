@@ -7,9 +7,9 @@ const clearIntervals = () => {
 };
 
 const Fitness = () => {
-    const [trainingTime, setTrainingTime] = useState(0);
-    const [restTime, setRestTime] = useState(0);
-    const [repeat, setRepeat] = useState(0);
+    const [trainingTime, setTrainingTime] = useState(30);
+    const [restTime, setRestTime] = useState(10);
+    const [repeat, setRepeat] = useState(2);
 
     const handleChangeTrainingTime = (event) => {
         setTrainingTime(parseInt(event.currentTarget.value));
@@ -21,80 +21,70 @@ const Fitness = () => {
         setRepeat(parseInt(event.currentTarget.value));
     };
 
-    const playAlert = () => {
-        window.alert.play(() => {
-            console.log('play alert');
-        });
-    };
-
-    const countDown = (counterInSeconds) => {
+    const countDown = () => {
         clearIntervals();
-        const alertOneAt = (counterInSeconds - restTime - 5);
-        console.log('alert at: ' + alertOneAt);
+
+        let counterInSeconds = trainingTime + restTime;
+        console.log('Total: ' + counterInSeconds);
+        
+        const alertOneAt = (counterInSeconds - trainingTime);
 
         const intervalId = setInterval(() => {
             counterInSeconds--;
-            console.log('current counterInSeconds: ' + counterInSeconds);
+            console.log('current: ' + counterInSeconds);
 
             if (counterInSeconds === alertOneAt) {
-                playAlert();
-                console.log('alert: 5 seconds countdown');
+                console.log('alert: training completed');
+                window.alert.play();
             }
 
             if (counterInSeconds === 0) {
-                console.log('alert: rest completed');
                 clearIntervals(intervalId);
-                playAlert();
+                console.log('alert: rest completed');
+                window.alert.play();
             }
         }, 1000);
 
         intervals.push(intervalId);
+        setRepeat(prevRepeat => (prevRepeat - 1));
     };
 
     const handleStartClick = () => {
-
-        const totalSeconds = (trainingTime + restTime) * 1;
-        countDown(totalSeconds);
+        countDown();
     };
-
+    
     return (
         <div className="container fitness">
             <div className="select-wrapper icon-circle-down">
+                <label htmlFor="training-time">Training-Zeit auswählen</label>
                 <select onChange={handleChangeTrainingTime} value={trainingTime}>
-                    <option value={0} disabled>Dauer-Zeit auswählen</option>
-                    <option value={20}>05 Min (Training)</option>
-                    <option value={10 * 60}>10 Min (Training)</option>
-                    <option value={20 * 60}>20 Min (Training)</option>
-                    <option value={30 * 60}>30 Min (Training)</option>
+                    <option value={30}>30s (Training)</option>
+                    <option value={40}>40s (Training)</option>
+                    <option value={50}>50s (Training)</option>
+                    <option value={60}>60s (Training)</option>
                 </select>
             </div>
             <div className="select-wrapper icon-circle-down">
-                <select onChange={handleChangeRestTime} value={restTime}>
-                    <option value={0} disabled>Pause-Zeit auswählen</option>
-                    <option value={5}>05 Min (Rest)</option>
-                    <option value={10 * 60}>10 Min (Rest)</option>
-                    <option value={15 * 60}>15 Min (Rest)</option>
+                <label htmlFor="rest-time">Pause-Zeit auswählen</label>
+                <select name="reset-time" onChange={handleChangeRestTime} value={restTime}>
+                    <option value={10}>10s (Pause)</option>
+                    <option value={15}>15s (Pause)</option>
+                    <option value={30}>30s (Pause)</option>
                 </select>
             </div>
             <div className="select-wrapper icon-circle-down">
-                <select onChange={handleChangeRepeat} value={repeat}>
-                    <option value={0} disabled>Wie viele Wiederholungen?</option>
-                    <option value={2}>2 x Repeat</option>
-                    <option value={3}>3 x Repeat</option>
-                    <option value={4}>4 x Repeat</option>
-                    <option value={5}>5 x Repeat</option>
-                    <option value={6}>6 x Repeat</option>
-                    <option value={7}>7 x Repeat</option>
-                    <option value={8}>8 x Repeat</option>
-                    <option value={9}>9 x Repeat</option>
+                <label htmlFor="repeat">Wie viele Wiederholungen?</label>
+                <select name="repeat" onChange={handleChangeRepeat} value={repeat}>
+                    <option value={2}>2 x Wiederholungen</option>
+                    <option value={3}>3 x Wiederholungen</option>
+                    <option value={5}>5 x Wiederholungen</option>
+                    <option value={8}>8 x Wiederholungen</option>
                 </select>
             </div>
 
             <button type="button"
                     className="button button-start"
-                    onClick={handleStartClick}
-                // disabled={trainingTime === 0 || restTime === 0 || repeat === 0}
-            >
+                    onClick={handleStartClick}>
                 start
             </button>
         </div>
