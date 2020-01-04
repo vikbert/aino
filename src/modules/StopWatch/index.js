@@ -16,8 +16,11 @@ const StopWatch = ({toggleBgColor}) => {
     };
 
     const TimerOptionButton = ({optionValue, children = null}) => {
+        const isSelected = optionValue === selectedValue;
+        
         return (
-            <button className={classNames("button timer-option", optionValue === selectedValue && "active")}
+            <button className={classNames("button timer-option", isSelected && "active")}
+                    disabled={isSelected}
                     onClick={(event) => {
                         handleClickOnOptionButton(optionValue);
                     }}>
@@ -41,7 +44,7 @@ const StopWatch = ({toggleBgColor}) => {
                     {"00 m"}
                     <span className="icon-spinner11"/>
                 </button>
-                <TimerOptionButton optionValue={0.1}>
+                <TimerOptionButton optionValue={3}>
                     <span className="icon-grin"/>
                 </TimerOptionButton>
             </div>

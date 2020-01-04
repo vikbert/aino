@@ -24,9 +24,9 @@ $time-option-height: 60px;
     line-height: $time-option-height;
     font-size: $time-option-height / 3;
     span {
-        font-size: 22px;
+        font-size: 18px;
         padding-left: 10px;
-        color: #0000009c;
+        color: inherit;
     }
 }
 .active {
