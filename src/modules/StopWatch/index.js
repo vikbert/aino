@@ -9,11 +9,14 @@ const clearIntervals = () => {
 };
 
 const StopWatch = ({toggleBgColor}) => {
+    const [selectedValue, setSelectedValue] = useState(0);
     const [seconds, setSeconds] = useState(0);
 
     const reset = () => {
         clearIntervals();
         setSeconds(0);
+        setSelectedValue(0);
+
         window.alert.play();
     };
 
@@ -28,8 +31,7 @@ const StopWatch = ({toggleBgColor}) => {
                 toggleBgColor();
             }
             if (counter === 0) {
-                window.alert.play();
-                clearInterval(intervalId);
+                reset();
             }
         }, 1000);
 
@@ -54,9 +56,17 @@ const StopWatch = ({toggleBgColor}) => {
         return hours + ':' + minutes + ':' + seconds;
     };
 
+    const handleClickOnOptionButton = (optionValue) => {
+        setSelectedValue(optionValue);
+        countDown(optionValue * 60);
+    };
+
     const TimerOptionButton = ({optionValue, children = null}) => {
         return (
-            <button className="button timer-option" onClick={() => countDown(optionValue * 60)}>
+            <button className= {classNames("button timer-option", optionValue === selectedValue && "active")}
+                    onClick={(event) => {
+                        handleClickOnOptionButton(optionValue);
+                    }}>
                 {`${optionValue < 10 ? "0" + optionValue : optionValue} m`}
                 {children}
             </button>

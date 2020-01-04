@@ -28,7 +28,8 @@ $time-option-height: 60px;
         padding-left: 10px;
         color: #0000009c;
     }
-    &:focus {
-        background-color: red;
-    }
+}
+.active {
+    background-color: #e2e2e2e2;
+    box-shadow: none;
 }
