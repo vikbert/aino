@@ -1,0 +1,23 @@
+.process-bar {
+    position: relative;
+    width: 280px;
+    height: 20px;
+    background-color: rgba(184, 248, 71, 0.58);
+    border-radius: 3px;
+    .percent {
+        line-height: 20px;
+        position: absolute;
+        top: 0;
+        left: 8px;
+    }
+
+    .segment {
+        border-radius: 3px;
+        text-align: center;
+        color: #D8000C;
+        line-height: 20px;
+        height: 100%;
+        font-size: 14px;
+        background-color: yellow;
+    }
+}

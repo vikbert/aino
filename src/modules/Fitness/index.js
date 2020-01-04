@@ -21,6 +21,8 @@ const Fitness = () => {
     };
 
     const handleClickStart = () => {
+        window.alert.play();
+        
         schedule = [];
         for (let i = 0; i < plan.repeat; i++) {
             schedule.push(parseInt(plan.training));
@@ -54,7 +56,6 @@ const Fitness = () => {
 
         let next = schedule.shift();
         setNextCountDown(parseInt(next));
-        console.log(schedule);
     };
 
     useEffect(() => {
@@ -71,6 +72,7 @@ const Fitness = () => {
                 <label htmlFor="training">Training-Zeit auswählen</label>
                 <select name="training"
                         onChange={(event) => handleOnChange(event, 'training')}
+                        disabled={touchedAt !== null}
                         value={plan.training}>
                     <option value={30}>30s (Training)</option>
                     <option value={40}>40s (Training)</option>
@@ -82,6 +84,7 @@ const Fitness = () => {
                 <label htmlFor="rest">Pause-Zeit auswählen</label>
                 <select name="rest"
                         onChange={(event) => handleOnChange(event, 'rest')}
+                        disabled={touchedAt !== null}
                         value={plan.rest}>
                     <option value={10}>10s (Pause)</option>
                     <option value={15}>15s (Pause)</option>
@@ -92,6 +95,7 @@ const Fitness = () => {
                 <label htmlFor="repeat">Wie viele Wiederholungen?</label>
                 <select name="repeat"
                         onChange={(event) => handleOnChange(event, 'repeat')}
+                        disabled={touchedAt !== null}
                         value={plan.repeat}>
                     <option value={2}>2 x Wiederholungen</option>
                     <option value={3}>3 x Wiederholungen</option>
