@@ -1,69 +1,23 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-
-let intervals = [];
-const clearIntervals = () => {
-    intervals.forEach(clearInterval);
-    intervals = [];
-};
+import CountDownDisplay from "./CountDownDisplay";
 
 const StopWatch = ({toggleBgColor}) => {
     const [selectedValue, setSelectedValue] = useState(0);
-    const [seconds, setSeconds] = useState(0);
-
-    const reset = () => {
-        clearIntervals();
-        setSeconds(0);
-        setSelectedValue(0);
-
-        window.alert.play();
-    };
-
-    const countDown = (counter) => {
-        clearIntervals();
-        setSeconds(counter);
-
-        const intervalId = setInterval(() => {
-            counter--;
-            setSeconds(counter);
-            if (counter <= 5) {
-                toggleBgColor();
-            }
-            if (counter === 0) {
-                reset();
-            }
-        }, 1000);
-
-        intervals.push(intervalId);
-    };
-
-    const secondsToTime = (counter) => {
-        let hours = Math.floor(counter / 3600);
-        let minutes = Math.floor((counter - (hours * 3600)) / 60);
-        let seconds = counter - (hours * 3600) - (minutes * 60);
-
-        if (hours < 10) {
-            hours = "0" + hours;
-        }
-        if (minutes < 10) {
-            minutes = "0" + minutes;
-        }
-        if (seconds < 10) {
-            seconds = "0" + seconds;
-        }
-
-        return hours + ':' + minutes + ':' + seconds;
-    };
 
     const handleClickOnOptionButton = (optionValue) => {
+        console.log('selected option(m): ' + selectedValue);
         setSelectedValue(optionValue);
-        countDown(optionValue * 60);
+    };
+
+    const handleResetOption = () => {
+        setSelectedValue(0);
     };
 
     const TimerOptionButton = ({optionValue, children = null}) => {
         return (
-            <button className= {classNames("button timer-option", optionValue === selectedValue && "active")}
+            <button className={classNames("button timer-option", optionValue === selectedValue && "active")}
                     onClick={(event) => {
                         handleClickOnOptionButton(optionValue);
                     }}>
@@ -80,17 +34,14 @@ const StopWatch = ({toggleBgColor}) => {
 
     return (
         <div className={classNames("container")}>
-            <div className="timer-window">
-                <div className="time-display timer-display">
-                    {secondsToTime(seconds)}
-                </div>
-            </div>
+            <CountDownDisplay counterInSeconds={selectedValue * 60} resetOption={handleResetOption}/>
             <div className="timer-options">
-                <button className="button timer-option" onClick={reset}>
+                <button className="button timer-option" onClick={() => {
+                }}>
                     {"00 m"}
                     <span className="icon-spinner11"/>
                 </button>
-                <TimerOptionButton optionValue={3}>
+                <TimerOptionButton optionValue={0.1}>
                     <span className="icon-grin"/>
                 </TimerOptionButton>
             </div>
