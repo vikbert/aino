@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import CountDownDisplay from "../StopWatch/CountDownDisplay";
 import {clearAllIntervals} from "../../utils/IntervalHelper";
+import TimerDisplay from "../Timer/TimerDisplay";
 
 let schedule = [];
 const initPlan = {
@@ -63,7 +63,7 @@ const Fitness = () => {
 
     return (
         <div className="container fitness">
-            <CountDownDisplay
+            <TimerDisplay
                 counterInSeconds={nextCountDown}
                 resetOption={handleResetCallback}
             />

@@ -10,7 +10,6 @@ const pages = ["one", "two", "three", "four"];
 
 function App() {
     const [isOverview, setIsOverview] = useState(false);
-    const [warning, setWarning] = useState(false);
 
     const toggleMenu = () => {
         setIsOverview(prevValue => !prevValue);
