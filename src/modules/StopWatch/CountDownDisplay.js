@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {secondsToTime} from "../../utils/TimeHelper";
 
@@ -9,45 +9,72 @@ const clearAllIntervals = () => {
     intervals = [];
 };
 
-const CountDownDisplay = ({counterInSeconds, resetOption = () => {}}) => {
-    const [seconds, setSeconds] = useState(0);
+class CountDownDisplay extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {seconds: 0};
+    };
 
-    const countDown = useCallback((value) => {
-        if (value === 0) {
+    reset = () => {
+        clearAllIntervals();
+        this.setState({seconds: 0});
+        window.alert.play()
+            .then(() => {
+                console.log('alert played');
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
+
+    countDown(counterInSeconds) {
+        if (counterInSeconds === 0) {
             return;
         }
 
         clearAllIntervals();
-        setSeconds(counterInSeconds);
+
+        this.setState({seconds: counterInSeconds});
         const intervalId = setInterval(() => {
             counterInSeconds--;
-            setSeconds(counterInSeconds);
+            this.setState({seconds: counterInSeconds});
             if (counterInSeconds === 0) {
-                clearAllIntervals();
-                window.alert.play()
-                    .then(() => {console.log('alert played');})
-                    .catch((error) => {console.log(error);});
-                resetOption();
+                this.reset();
+                this.props.resetOption();
             }
         }, 1000);
         intervals.push(intervalId);
-    }, [counterInSeconds, resetOption]);
+    }
 
-    useEffect(() => {
-        countDown(counterInSeconds);
-    }, [countDown, counterInSeconds]);
+    componentDidMount() {
+        this.props.onRef(this);
+    }
 
-    return (
-        <div className="timer-window">
-            <div className="time-display timer-display">
-                {secondsToTime(seconds)}
+    componentWillUnmount() {
+        this.props.onRef(undefined);
+    }
+
+    componentDidUpdate({counterInSeconds}, prevState, snapshot) {
+        if (this.props.counterInSeconds
+            && counterInSeconds !== this.props.counterInSeconds) {
+            this.countDown(3);
+        }
+    }
+
+    render() {
+        return (
+            <div className="timer-window">
+                <div className="time-display timer-display">
+                    {secondsToTime(this.state.seconds)}
+                </div>
             </div>
-        </div>
-    );
+        );
+    }
 };
 
 CountDownDisplay.propTypes = {
     counterInSeconds: PropTypes.number,
+    onRef: PropTypes.func,
     resetOption: PropTypes.func,
 };
 
