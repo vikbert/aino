@@ -20,10 +20,6 @@ const Fitness = () => {
         });
     };
 
-    const _toString = (time) => {
-        return (new Date(time)).toString();
-    };
-
     const handleClickStart = () => {
         schedule = [];
         for (let i = 0; i < plan.repeat; i++) {
@@ -62,7 +58,6 @@ const Fitness = () => {
     };
 
     useEffect(() => {
-        console.log('useEffect() TOUCHED AT: ', _toString(touchedAt));
         startNextCountDown(touchedAt);
     }, [touchedAt]);
 

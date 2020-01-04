@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import './main.scss';
 import classNames from 'classnames';
 import Clock from "./modules/Clock";
-import StopWatch from "./modules/StopWatch";
+import Timer from "./modules/Timer";
 import Fitness from "./modules/Fitness";
 import Activity from "./modules/Activity";
 
@@ -15,15 +15,6 @@ function App() {
     const toggleMenu = () => {
         setIsOverview(prevValue => !prevValue);
         document.getElementsByClassName('wrapper')[0].classList.toggle('menu-open');
-    };
-
-    const togglePageBgColor = (reset = null) => {
-        if (reset) {
-            setWarning(false);
-            return;
-        }
-
-        setWarning((prevWarning) => !prevWarning);
     };
 
     const goToPage = (pageNumber) => {
@@ -66,21 +57,21 @@ function App() {
                 <Fitness/>
             </section>
 
-            <section className={classNames("two after", warning && "default")}>
+            <section className="two">
                 <h1 onClick={() => handleOnClickHeader(1)}>
                     <span className="icon-stopwatch"/>
                 </h1>
-                <StopWatch toggleBgColor={togglePageBgColor}/>
+                <Timer/>
             </section>
 
-            <section className="three after">
+            <section className="three">
                 <h1 onClick={() => handleOnClickHeader(2)}>
                     <span className="icon-calendar"/>
                 </h1>
                 <Activity/>
             </section>
 
-            <section className="four after">
+            <section className="four">
                 <h1 onClick={() => handleOnClickHeader(3)}>
                     <span className="icon-alarm"/>
                 </h1>

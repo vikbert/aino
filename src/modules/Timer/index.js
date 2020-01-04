@@ -23,7 +23,6 @@ class Timer extends Component {
     };
 
     render() {
-        const {toggleBgColor} = this.props;
         const TimerOptionButton = ({optionValue, children = null}) => {
             const isSelected = optionValue === this.state.selectedValue;
 
@@ -80,9 +79,5 @@ class Timer extends Component {
         );
     }
 }
-
-Timer.propTypes = {
-    toggleBgColor: PropTypes.func.isRequired,
-};
 
 export default Timer;
