@@ -2,17 +2,22 @@ import React, {useEffect, useState} from "react";
 
 const Clock = () => {
     const [trigger, setTrigger] = useState(true);
-    const today = new Date();
+    const today = (new Date()).toString();
 
     useEffect(() => {
-        setTimeout(function() {
+        const timeoutId = setInterval(function() {
             setTrigger(prevTrigger => !prevTrigger);
         }, 1000);
-    });
+        console.log('Clock used timeoutID: ' + timeoutId);
+    }, []);
 
     return (
         <div className="container clock-container">
-            <div className="time-display hour">{today.toString().substr(15, 6)}</div>
+            <div className="time-display hour">
+                {today.substr(15, 3)}
+                <span className={trigger ? "second" : ""}>{today.substr(18, 1)}</span>
+                {today.substr(19, 2)}
+            </div>
         </div>
     );
 };
