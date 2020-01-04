@@ -73,9 +73,16 @@ class CountDownDisplay extends Component {
 };
 
 CountDownDisplay.propTypes = {
-    counterInSeconds: PropTypes.number,
+    counterInSeconds: PropTypes.number.isRequired,
     onRef: PropTypes.func,
     resetOption: PropTypes.func,
+};
+
+CountDownDisplay.defaultProps = {
+    onRef: () => {
+    },
+    resetOption: () => {
+    },
 };
 
 export default CountDownDisplay;

@@ -1,63 +1,71 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
+import CountDownDisplay from "../StopWatch/CountDownDisplay";
 
-let intervals = [];
-const clearIntervals = () => {
-    intervals.forEach(clearInterval);
-    intervals = [];
-};
-
+let schedule = [];
 const Fitness = () => {
-    const [trainingTime, setTrainingTime] = useState(30);
-    const [restTime, setRestTime] = useState(10);
-    const [repeat, setRepeat] = useState(2);
+    const [plan, setPlan] = useState({
+        training: 30,
+        rest: 10,
+        repeat: 2,
+    });
+    const [touchedAt, setTouchedAt] = useState(null);
+    const [nextCountDown, setNextCountDown] = useState(0);
 
-    const handleChangeTrainingTime = (event) => {
-        setTrainingTime(parseInt(event.currentTarget.value));
+    const handleOnChange = (event, name) => {
+        setPlan({
+            ...plan,
+            [name]: event.currentTarget.value,
+        });
     };
-    const handleChangeRestTime = (event) => {
-        setRestTime(parseInt(event.currentTarget.value));
-    };
-    const handleChangeRepeat = (event) => {
-        setRepeat(parseInt(event.currentTarget.value));
-    };
 
-    const countDown = () => {
-        clearIntervals();
-
-        let counterInSeconds = trainingTime + restTime;
-        console.log('Total: ' + counterInSeconds);
-
-        const alertOneAt = (counterInSeconds - trainingTime);
-
-        const intervalId = setInterval(() => {
-            counterInSeconds--;
-            console.log('current: ' + counterInSeconds);
-
-            if (counterInSeconds === alertOneAt) {
-                console.log('alert: training completed');
-                window.alert.play();
-            }
-
-            if (counterInSeconds === 0) {
-                clearIntervals(intervalId);
-                console.log('alert: rest completed');
-                window.alert.play();
-            }
-        }, 1000);
-
-        intervals.push(intervalId);
-        setRepeat(prevRepeat => (prevRepeat - 1));
+    const _toString = (time) => {
+        return (new Date(time)).toString();
     };
 
     const handleStartClick = () => {
-        countDown();
+        setNextCountDown(plan.rest);
+        for (let i = 0; i < plan.repeat; i++) {
+            schedule.push(plan.training);
+            schedule.push(plan.rest);
+        }
+
+        console.log('##### schedule');
+        console.log(schedule);
     };
+    // console.log('fitness counter: ' + nextCountDown);
+    // console.log('fitness plan: ', plan);
+
+    const handleReset = () => {
+        setNextCountDown(0);
+        setTouchedAt((new Date()).getTime());
+    };
+
+    const startNextCountDown = (touchedAt) => {
+        if (schedule.length === 0) {
+            console.log('!!!!! Do nothing, schedule empty !!!');
+            return;
+        }
+
+        let next = schedule.shift();
+        setNextCountDown(parseInt(next));
+        console.log('##### starting the next count down: ' + next);
+    };
+    useEffect(() => {
+        console.log('useEffect() TOUCHED AT: ', _toString(touchedAt));
+        startNextCountDown(touchedAt);
+    }, [touchedAt]);
 
     return (
         <div className="container fitness">
+            <CountDownDisplay
+                counterInSeconds={nextCountDown}
+                resetOption={handleReset}
+            />
             <div className="select-wrapper icon-circle-down">
-                <label htmlFor="training-time">Training-Zeit auswählen</label>
-                <select onChange={handleChangeTrainingTime} value={trainingTime}>
+                <label htmlFor="training">Training-Zeit auswählen</label>
+                <select name="training"
+                        onChange={(event) => handleOnChange(event, 'training')}
+                        value={plan.training}>
                     <option value={30}>30s (Training)</option>
                     <option value={40}>40s (Training)</option>
                     <option value={50}>50s (Training)</option>
@@ -65,8 +73,10 @@ const Fitness = () => {
                 </select>
             </div>
             <div className="select-wrapper icon-circle-down">
-                <label htmlFor="rest-time">Pause-Zeit auswählen</label>
-                <select name="reset-time" onChange={handleChangeRestTime} value={restTime}>
+                <label htmlFor="rest">Pause-Zeit auswählen</label>
+                <select name="rest"
+                        onChange={(event) => handleOnChange(event, 'rest')}
+                        value={plan.test}>
                     <option value={10}>10s (Pause)</option>
                     <option value={15}>15s (Pause)</option>
                     <option value={30}>30s (Pause)</option>
@@ -74,7 +84,9 @@ const Fitness = () => {
             </div>
             <div className="select-wrapper icon-circle-down">
                 <label htmlFor="repeat">Wie viele Wiederholungen?</label>
-                <select name="repeat" onChange={handleChangeRepeat} value={repeat}>
+                <select name="repeat"
+                        onChange={(event) => handleOnChange(event, 'repeat')}
+                        value={plan.repeat}>
                     <option value={2}>2 x Wiederholungen</option>
                     <option value={3}>3 x Wiederholungen</option>
                     <option value={5}>5 x Wiederholungen</option>
