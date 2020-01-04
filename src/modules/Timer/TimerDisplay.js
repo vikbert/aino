@@ -9,7 +9,7 @@ const clearAllIntervals = () => {
     intervals = [];
 };
 
-class CountDownDisplay extends Component {
+class TimerDisplay extends Component {
     constructor(props) {
         super(props);
         this.state = {seconds: 0};
@@ -72,17 +72,17 @@ class CountDownDisplay extends Component {
     }
 };
 
-CountDownDisplay.propTypes = {
+TimerDisplay.propTypes = {
     counterInSeconds: PropTypes.number.isRequired,
     onRef: PropTypes.func,
     resetOption: PropTypes.func,
 };
 
-CountDownDisplay.defaultProps = {
+TimerDisplay.defaultProps = {
     onRef: () => {
     },
     resetOption: () => {
     },
 };
 
-export default CountDownDisplay;
+export default TimerDisplay;

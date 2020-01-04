@@ -1,13 +1,15 @@
 import React, {useEffect, useState} from 'react';
 import CountDownDisplay from "../StopWatch/CountDownDisplay";
+import {clearAllIntervals} from "../../utils/IntervalHelper";
 
 let schedule = [];
+const initPlan = {
+    training: 30,
+    rest: 10,
+    repeat: 2,
+};
 const Fitness = () => {
-    const [plan, setPlan] = useState({
-        training: 30,
-        rest: 10,
-        repeat: 2,
-    });
+    const [plan, setPlan] = useState(initPlan);
     const [touchedAt, setTouchedAt] = useState(null);
     const [nextCountDown, setNextCountDown] = useState(0);
 
@@ -22,34 +24,43 @@ const Fitness = () => {
         return (new Date(time)).toString();
     };
 
-    const handleStartClick = () => {
-        setNextCountDown(plan.rest);
+    const handleClickStart = () => {
+        schedule = [];
         for (let i = 0; i < plan.repeat; i++) {
-            schedule.push(plan.training);
-            schedule.push(plan.rest);
+            schedule.push(parseInt(plan.training));
+            schedule.push(parseInt(plan.rest));
         }
-
-        console.log('##### schedule');
-        console.log(schedule);
-    };
-    // console.log('fitness counter: ' + nextCountDown);
-    // console.log('fitness plan: ', plan);
-
-    const handleReset = () => {
-        setNextCountDown(0);
         setTouchedAt((new Date()).getTime());
+    };
+
+    const handleClickCancel = () => {
+        schedule = [];
+        clearAllIntervals();
+
+        setPlan(initPlan);
+        setTouchedAt(null);
+        setNextCountDown(0);
+    };
+
+    const handleResetCallback = () => {
+        setNextCountDown(0);
+        if (schedule.length === 0) {
+            setTouchedAt(null);
+        } else {
+            setTouchedAt((new Date()).getTime());
+        }
     };
 
     const startNextCountDown = (touchedAt) => {
         if (schedule.length === 0) {
-            console.log('!!!!! Do nothing, schedule empty !!!');
             return;
         }
 
         let next = schedule.shift();
         setNextCountDown(parseInt(next));
-        console.log('##### starting the next count down: ' + next);
+        console.log(schedule);
     };
+
     useEffect(() => {
         console.log('useEffect() TOUCHED AT: ', _toString(touchedAt));
         startNextCountDown(touchedAt);
@@ -59,7 +70,7 @@ const Fitness = () => {
         <div className="container fitness">
             <CountDownDisplay
                 counterInSeconds={nextCountDown}
-                resetOption={handleReset}
+                resetOption={handleResetCallback}
             />
             <div className="select-wrapper icon-circle-down">
                 <label htmlFor="training">Training-Zeit auswählen</label>
@@ -76,7 +87,7 @@ const Fitness = () => {
                 <label htmlFor="rest">Pause-Zeit auswählen</label>
                 <select name="rest"
                         onChange={(event) => handleOnChange(event, 'rest')}
-                        value={plan.test}>
+                        value={plan.rest}>
                     <option value={10}>10s (Pause)</option>
                     <option value={15}>15s (Pause)</option>
                     <option value={30}>30s (Pause)</option>
@@ -94,11 +105,23 @@ const Fitness = () => {
                 </select>
             </div>
 
-            <div
-                className="button button-start"
-                onClick={handleStartClick}>
-                <span>start</span>
-            </div>
+            {touchedAt === null
+                ? (
+                    <div
+                        className="button button-start"
+                        onClick={handleClickStart}>
+                        <span>Start</span>
+                    </div>
+                )
+                : (
+                    <div
+                        className="button button-cancel"
+                        onClick={handleClickCancel}>
+                        <span>Cancel</span>
+                    </div>
+                )
+            }
+
         </div>
     );
 

@@ -5,6 +5,7 @@
     justify-content: flex-start;
     align-items: center;
 }
+
 $select-width: 280px;
 .select-wrapper {
     position: relative;
@@ -57,17 +58,27 @@ label {
     padding-left: 4px;
     font-family: 'Open Sans', sans-serif;
 }
+
 $height-button: 60px;
-.button-start {
+.button-start, .button-cancel {
     margin-top: 30px;
     width: $select-width;
     height: $height-button;
     line-height: $height-button;
-    color: $green;
-    font-family: "Bebas Neue", sans-serif;
     text-align: center;
     font-size: 20px;
+    font-family: 'Open Sans', sans-serif;
     font-weight: bolder;
     border-radius: 3px;
-    box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, .3)
+    box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, .3);
 }
+
+.button-start {
+    color: darkgreen;
+}
+
+.button-cancel {
+    background-color: orangered;
+    color: #ffffff;
+}
+

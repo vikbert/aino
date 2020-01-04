@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import CountDownDisplay from "./CountDownDisplay";
+import TimerDisplay from "./TimerDisplay";
 
-class StopWatch extends Component {
+class Timer extends Component {
     constructor(props) {
         super(props);
         this.state = {selectedValue: 0};
@@ -46,7 +46,7 @@ class StopWatch extends Component {
 
         return (
             <div className={classNames("container")}>
-                <CountDownDisplay
+                <TimerDisplay
                     onRef={ref => (this.child = ref)}
                     counterInSeconds={this.state.selectedValue * 60}
                     resetOption={this.handleResetOption}
@@ -81,8 +81,8 @@ class StopWatch extends Component {
     }
 }
 
-StopWatch.propTypes = {
+Timer.propTypes = {
     toggleBgColor: PropTypes.func.isRequired,
 };
 
-export default StopWatch;
+export default Timer;
