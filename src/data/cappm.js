@@ -25,7 +25,7 @@ export const comments = [
         category: 3,
     },
     {
-        content: "Kim updates Meeting",
+        content: "Team updates Meeting",
         tag: "team, meeting",
         category: 3,
     },
