@@ -18,6 +18,10 @@ function App() {
 
     const goToPage = (pageNumber) => {
         setIsOverview(false);
+        
+        if (pageNumber === 0 || pageNumber === 1) {
+            window.alert.play();
+        }
 
         const sections = document.getElementsByTagName('section');
         const wrapper = document.getElementsByClassName('wrapper')[0];
