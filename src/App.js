@@ -10,6 +10,7 @@ const pages = ["one", "two", "three", "four"];
 
 function App() {
     const [isOverview, setIsOverview] = useState(false);
+    const [isDarkMode, setIsDarkMode] = useState(false);
 
     const toggleMenu = () => {
         setIsOverview(prevValue => !prevValue);
@@ -18,7 +19,7 @@ function App() {
 
     const goToPage = (pageNumber) => {
         setIsOverview(false);
-        
+
         if (pageNumber === 0 || pageNumber === 1) {
             window.alert.play();
         }
@@ -51,6 +52,10 @@ function App() {
         return toggleMenu();
     };
 
+    const toggleDarkPageColor = () => {
+        setIsDarkMode((prevMode) => !prevMode);
+    };
+
     return (
         <div className={classNames("wrapper", isOverview && "menu-open")}>
             <section className="one">
@@ -74,11 +79,11 @@ function App() {
                 <Activity/>
             </section>
 
-            <section className="four">
+            <section className={classNames("four", isDarkMode && "dark-mode")}>
                 <h1 onClick={() => handleOnClickHeader(3)}>
                     <span className="icon-alarm"/>
                 </h1>
-                <Clock/>
+                <Clock handleTogglePageColor={toggleDarkPageColor}/>
             </section>
         </div>
     );
