@@ -1,7 +1,7 @@
 <div align="center">
-  <img src="./docs/aino.jpg" width="80px" alt="aino" />
+  <img src="./docs/aino.jpg" width="480px" alt="aino" />
   <h3>A Reacttive Slider App</h3>
-  <p>A React coding kata to make the animation to slide the SPA page views</p>
+  <p>A React coding kata to slide the SPA page views with animation</p>
 
   <p>
     <a href="#">
