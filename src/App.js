@@ -4,6 +4,7 @@ import classNames from "classnames";
 import Clock from "./modules/Clock";
 import Timer from "./modules/Timer";
 import Fitness from "./modules/Fitness";
+import GitHub from "./modules/components/Github";
 
 const pages = ["one", "two", "three", "four"];
 
