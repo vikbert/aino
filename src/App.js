@@ -4,7 +4,6 @@ import classNames from "classnames";
 import Clock from "./modules/Clock";
 import Timer from "./modules/Timer";
 import Fitness from "./modules/Fitness";
-import Activity from "./modules/Activity";
 
 const pages = ["one", "two", "three", "four"];
 
@@ -66,13 +65,6 @@ function App() {
           <span className="icon-stopwatch" />
         </h1>
         <Timer />
-      </section>
-
-      <section className="three">
-        <h1 onClick={() => handleOnClickHeader(2)}>
-          <span className="icon-calendar" />
-        </h1>
-        <Activity />
       </section>
 
       <section className={classNames("four", isDarkMode && "dark-mode")}>
